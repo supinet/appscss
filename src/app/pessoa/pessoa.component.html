@@ -1,0 +1,74 @@
+<main class="container">
+  <!-- Título -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Cadastrar</h1>
+      <h6>https://github.com/supinet/appscss</h6>
+    </div>
+  </div>
+  <!-- Formulário -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="pessoa.nome" value={{pessoa.nome}} class="form-control" name="nome" required />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="cpfCnpj">Cpf/Cnpj</label>
+        <input type="text" [(ngModel)]="pessoa.cpfCnpj" value={{pessoa.cpfCnpj}} class="form-control" name="cpfCnpj" required />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" [(ngModel)]="pessoa.email" value={{pessoa.email}} class="form-control" name="email" required>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="photo">Foto</label>
+        <input type="text" [(ngModel)]="pessoa.photo" value={{pessoa.photo}} class="form-control" name="photo" required />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click) = "addPessoa()">
+            <span >Cadastrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Listagem -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Cpf/Cnpj</th>
+        <th>E-mail</th>
+        <th>Foto</th>
+        <th class="text-center">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of pessoaService.getPessoas(); let i = index;">
+        <td>{{pessoa.id}}</td>
+        <td>{{pessoa.nome}}</td>
+        <td>{{pessoa.cpfCnpj}}</td>
+        <td>{{pessoa.email}}</td>
+        <td>
+          <img [src]="pessoa.photo">
+        </td>
+        <td class="text-center">
+          <button type="button" class="btn btn-danger" (click)="removePessoa(pessoa.id)">Excluir</button>
+          <button type="button" class="btn btn-primary" (click)="editPessoa(pessoa)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+<h5 appPessoa>Exemplo de manipulacao de DOM pelo angular</h5>
+<!-- <pre>{{pessoa | json}}</pre> -->
