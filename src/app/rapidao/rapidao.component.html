@@ -1,3 +1,19 @@
-<p>
-  rapidao works!
-</p>
+<div *ngIf="loading">
+  Loading....
+</div>
+<table class="table" *ngIf="!loading">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Título</th>
+      <th scope="col">Conteúdo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts">
+      <th scope="row">{{post.id}}</th>
+      <td>{{post.title}}</td>
+      <td>{{post.body}}</td>
+    </tr>
+  </tbody>
+</table>
